@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+
+### Print runtime environment info.
+
+
+set -o errexit
+set -o nounset
+
+
+uname --all
+whoami
+docker --version
+docker-compose --version
+ansible --version
+aws --version

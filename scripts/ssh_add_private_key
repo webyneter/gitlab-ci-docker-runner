@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+### ssh-add the runner's private key.
+
+
+set -o errexit
+set -o nounset
+
+
+mkdir -p ~/.ssh
+# https://docs.gitlab.com/ee/ci/ssh_keys/#how-it-works
+echo "${CI_RUNNER_SSH_PRIVATE_KEY}" | tr -d '\r' > ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+# https://docs.gitlab.com/ee/ci/ssh_keys/#verifying-the-ssh-host-keys
+ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
