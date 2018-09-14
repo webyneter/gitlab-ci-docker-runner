@@ -1,8 +1,6 @@
 FROM docker:18.06
 
-ARG ansible_version=2.6.4
-ARG dockercompose_version=1.22.0
-ARG awscli_version=1.16.14
+COPY ./requirements/ ./requirements/
 
 RUN \
 # region Ansible
@@ -15,7 +13,7 @@ RUN \
     apk add --virtual build-dependencies python-dev libffi-dev openssl-dev build-base && \
     pip install --upgrade pip cffi && \
     echo "===> Installing Ansible..."  && \
-    pip install --no-cache-dir ansible=="${ansible_version}" && \
+    pip install --no-cache-dir --requirement ./requirements/ansible.txt && \
     echo "===> Removing package list..."  && \
     apk del build-dependencies && \
 # endregion
@@ -23,14 +21,14 @@ RUN \
     apk add openssh && \
     # Docker Compose (https://gitlab.com/gitlab-org/gitlab-ce/issues/30426#note_37452055)
     apk add py-pip && \
-    pip install --no-cache-dir docker-compose=="${dockercompose_version}" && \
+    pip install --no-cache-dir --requirement ./requirements/docker-compose.txt && \
     # bash
     apk add bash && \
     # curl
     apk add curl && \
     # AWS CLI (https://github.com/mesosphere/aws-cli/blob/master/Dockerfile)
     apk add less groff mailcap && \
-    pip install --no-cache-dir awscli=="${awscli_version}" && \
+    pip install --no-cache-dir --requirement ./requirements/awscli.txt && \
     # cleanup
     apk --verbose --purge del py-pip && \
     rm -rf /var/cache/apk/*
