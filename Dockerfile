@@ -1,7 +1,6 @@
 FROM docker:18.06
 
-COPY ./requirements/ ./requirements/
-
+COPY ./requirements/ /requirements/
 RUN \
 # region Ansible
 # (from https://github.com/William-Yeh/docker-ansible/blob/master/alpine3/Dockerfile
@@ -13,7 +12,7 @@ RUN \
     apk add --virtual build-dependencies python-dev libffi-dev openssl-dev build-base && \
     pip install --upgrade pip cffi && \
     echo "===> Installing Ansible..."  && \
-    pip install --no-cache-dir --requirement ./requirements/ansible.txt && \
+    pip install --no-cache-dir --requirement /requirements/ansible.txt && \
     echo "===> Removing package list..."  && \
     apk del build-dependencies && \
 # endregion
@@ -21,15 +20,16 @@ RUN \
     apk add openssh && \
     # Docker Compose (https://gitlab.com/gitlab-org/gitlab-ce/issues/30426#note_37452055)
     apk add py-pip && \
-    pip install --no-cache-dir --requirement ./requirements/docker-compose.txt && \
+    pip install --no-cache-dir --requirement /requirements/docker-compose.txt && \
     # bash
     apk add bash && \
     # curl
     apk add curl && \
     # AWS CLI (https://github.com/mesosphere/aws-cli/blob/master/Dockerfile)
     apk add less groff mailcap && \
-    pip install --no-cache-dir --requirement ./requirements/awscli.txt && \
+    pip install --no-cache-dir --requirement /requirements/awscli.txt && \
     # cleanup
+    rm -rf /requirements/ && \
     apk --verbose --purge del py-pip && \
     rm -rf /var/cache/apk/*
 
