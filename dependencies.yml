@@ -5,4 +5,7 @@ dependencies:
   path: ./Dockerfile
 
 - type: python
-  path: ./requirements/
+  path:
+  - ./requirements/docker-compose.txt
+  - ./requirements/ansible.txt
+  - ./requirements/awscli.txt
