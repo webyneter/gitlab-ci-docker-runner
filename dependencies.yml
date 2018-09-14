@@ -1,0 +1,8 @@
+version: 2
+
+dependencies:
+- type: dockerfile
+  path: ./Dockerfile
+
+- type: python
+  path: ./requirements/
