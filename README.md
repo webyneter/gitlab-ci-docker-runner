@@ -1,4 +1,4 @@
-# gitlab-docker-ci-runner
+# GitLab CI Docker Runner 
 
 Docker-based GitLab CI Runner image.
 
