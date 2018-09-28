@@ -1,4 +1,4 @@
-FROM docker:18.06
+FROM docker:18
 
 COPY ./requirements/ /requirements/
 RUN \
