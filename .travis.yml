@@ -1,0 +1,9 @@
+language: generic
+
+env:
+  global:
+    secure: hGt9xAkGztgtn1SVviMGYw9pQ6Y8OtXHS5OUKY8o2DHfj+H4AO57/Ye7vehnkI5DLDt90Sf1km4S3/7C3GFtvp1i+aN1c3sXXMz/Jlp8xrMRNWHGu35jfj15TPt7bKm4pDKOmBBNKmIkNNseDmy9EhX74Hns9cE/SiWIYQN7yJx1JFK83qFR+vdizECw4fvBL9GPYyw7eb48Sl/IuDKzwCEhfHFFHsPPUUqQGLaOeQsBKY4OLjrTSbXmywG+4/ByLdxpNYLa4xNqLtKbA+Ppaf7tgkrMDXiS9ALrUk2SYSU2gmBJYHq5YRUeUaqUcBzxoDi1YfrYXC4EdKpx+8Gw5ZxlJoxTjoMIZsadPgvshMLqXeWWtzIQuqGqb96DMy8tfn44WUK6pBUpbb1b9emTJISqPvETuP3cdTBeHZPLlV1A0/F5VTMVZuR6dyCSzCvaTvWixipnfwegFrOmiIJ7bbeOLdaUW/r7w5Qsty6Rwj7qmGbojgdXc2jNeCorTUt/3P6c6DvKw7uv4Du7aSqil77iA0P37jQLlHw/Oj6VWOnS6IKK+KUuu3jiflW68nAS0/HaRJPzZ9qM0Pk0je+E1hXpeD2cm4YpvBuRmi82X2virqN3Bmn/z43w025k0GqMbZ80XZhSBTpjjvUDL6Bj9tUcNHkyB19EZ4WGfBwmxM8=
+
+script: |
+  curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "https://registry.hub.docker.com/u/webyneter/gitlab-ci-docker-runner/trigger/${DOCKER_HUB_TOKEN}/"
+  
