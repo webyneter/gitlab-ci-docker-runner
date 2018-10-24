@@ -8,15 +8,23 @@ Docker-based GitLab CI Runner image.
 
 ### Packages
 
-* [Docker](https://hub.docker.com/_/docker/) 18.06
-* [Docker Compose](https://pypi.org/project/docker-compose/) 1.22.0
-* [Ansible](https://pypi.org/project/ansible/) 2.6.4
-* [AWS CLI](https://pypi.org/project/awscli/) 1.16.14
+* [Docker](https://hub.docker.com/_/docker/)
+* [Docker Compose](https://pypi.org/project/docker-compose/)
+* [Ansible](https://pypi.org/project/ansible/)
+* [AWS CLI](https://pypi.org/project/awscli/)
+
+These are kept up-to-date on a best-effort basis.
 
 ### Executables
 
 * `print_info`: Prints runtime environment info
 * `ssh_add_private_key`: `ssh-add`s the runner's private key
+
+### Environment variables expected to be present
+
+[This is how you set GitLab CI secret environment variables](https://docs.gitlab.com/ee/ci/variables/#variables).
+
+* `CI_RUNNER_SSH_PRIVATE_KEY`: an unencrypted private key (as string) which the associated public key has been authorized to access your remote host; required by `ssh_add_private_key`
 
 ## Use Cases
 
