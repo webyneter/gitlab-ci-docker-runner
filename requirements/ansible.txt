@@ -1,1 +1,1 @@
-ansible==2.7.10  # https://pypi.org/project/ansible/
+ansible==2.8.0  # https://pypi.org/project/ansible/
