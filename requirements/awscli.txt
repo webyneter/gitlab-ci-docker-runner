@@ -1,1 +1,1 @@
-awscli==1.16.312  # https://pypi.org/project/awscli/
+awscli==1.17.1  # https://pypi.org/project/awscli/
