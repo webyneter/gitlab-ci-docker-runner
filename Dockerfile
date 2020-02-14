@@ -1,4 +1,4 @@
-FROM docker:19.03.5
+FROM docker:19.03.6
 
 COPY ./requirements/ /requirements/
 RUN \
