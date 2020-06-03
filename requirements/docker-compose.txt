@@ -1,1 +1,1 @@
-docker-compose==1.25.4  # https://pypi.org/project/docker-compose/
+docker-compose==1.26.0  # https://pypi.org/project/docker-compose/
